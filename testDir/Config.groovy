@@ -81,16 +81,16 @@ confluence = [:]
 // only 'file' or 'url' is allowed. If both are given, 'url' is ignored
 confluence.with {
     input = [
-            [ file: "build/html5/arc42-template-de.html" ],
+            [ file: "build/html5/doctoolchain_demo.html" ],
     ]
 
     // endpoint of the confluenceAPI (REST) to be used
-    api = 'https://[yourServer]/[context]/rest/api/'
+    api = 'https://<confluence_hostname>/rest/api/'
 
 //    Additionally, spaceKey, createSubpages, pagePrefix and pageSuffix can be globally defined here. The assignment in the input array has precedence
 
     // the key of the confluence space to write to
-    spaceKey = 'asciidoc'
+    spaceKey = '~<confluence_username>'
 
     // the title of the page containing the preamble (everything the first second level heading). Default is 'arc42'
     preambleTitle = ''
@@ -115,6 +115,7 @@ confluence.with {
     Often, same credentials are used for Jira & Confluence, in which case it is recommended to pass CLI parameters for both entities as 
     -Pusername=myUser -Ppassword=myPassword
     */
+    confluenceCredentials = '<username>:<password>'.bytes.encodeBase64().toString()
 
     //optional API-token to be added in case the credentials are needed for user and password exchange.
     //apikey = "[API-token]"
